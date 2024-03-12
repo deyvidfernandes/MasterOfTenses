@@ -44,7 +44,7 @@ CREATE TABLE Verbo (
 -- Criação da tabela Sistema
 CREATE TABLE Sistema (
     banco_Dados VARCHAR(100),
-    traduzirVerbo VARCHAR(100),
+    traduzirVerbo VARCHAR(150),
     obterTodosOsVerbos VARCHAR(100)
 );
 
