@@ -1,0 +1,77 @@
+/*
+
+   Arquivo de estilos utilizados nos formulários das páginas de login e cadastro
+
+*/
+
+body {
+   font-family: "Inter", sans-serif;
+   background-color: #0C102D;
+   box-sizing: border-box;
+}
+
+.greeting {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 8px;
+
+   & p { /* para se ao texto abaixo de bem vindo */
+      font-size: 16px;
+      font-weight: 500;
+   }
+   
+}
+
+.singup-login-div {
+   margin-inline: auto;
+   width: fit-content;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 32px;
+
+   background-color: white;
+   border-radius: 8px;
+   padding: 32px 64px;
+
+   & div { /* para a div que agrupa os inputs*/
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 16px;
+
+      & div { /* para se referir as divs que agrupam input e label */
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+      }
+
+   }
+
+}
+
+input {
+   height: 32px;
+   padding-left: 16px;
+
+   background-color: #EEE;
+   border-radius: 4px;
+   outline: none;
+   outline-color: none;
+   border: none;
+}
+
+.action-button-group {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 8px;
+   & a { /* para se referir ao link já tenho uma conta */
+      text-decoration: none;
+      color: #0000EE;
+      font-weight: 500;
+   }
+}

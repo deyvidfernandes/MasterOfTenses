@@ -1,0 +1,22 @@
+/*
+
+   Arquivo de estilos utilizados em várias páginas do projeto.
+
+*/
+
+.action-button {
+      width: 100%;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      background-color: #232F85;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+}
+
+.light-title {
+   font-size: 32px;
+   font-weight: 500;
+}
