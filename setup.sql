@@ -7,6 +7,7 @@ USE Master_of_tenses;
 -- Criação da tabela Usuário
 CREATE TABLE table_user (
    email VARCHAR(100) PRIMARY KEY,
+   user_name VARCHAR(100) NOT NULL,
    user_password VARCHAR(100) NOT NULL,
    register_date DATE NOT NULL,
    verb_register_json JSON
