@@ -4,18 +4,7 @@
 
 */
 
-/** Estilização padrão do corpo da página */
-
-body {
-   font-family: "Inter", sans-serif;
-   box-sizing: border-box;
-
-   /** Centralização dos elementos dentro do corpo da página */
-   & > * {
-      width: fit-content;
-      margin-inline: auto;
-   }
-}
+/** Classes utilitárias */
 
 .action-button {
       width: 100%;
@@ -32,6 +21,65 @@ body {
 .light-title {
    font-size: 32px;
    font-weight: 500;
+}
+
+/** Estilização padrão do corpo da página */
+
+body {
+   font-family: "Inter", sans-serif;
+   box-sizing: border-box;
+
+   /** Centralização dos elementos dentro do corpo da página */
+   & > * {
+      width: fit-content;
+      margin-inline: auto;
+   }
+}
+
+/** Estilização do rodapé */
+
+footer {
+   margin-top: 32px;
+   box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.6);
+
+   width: 100%;
+   #footer-links-container {
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      #footer-internal-links {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 32px;
+         
+         a {
+            color: #C0C9E1;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+         }
+
+      }
+
+      #github-link {
+         position: absolute;
+      }
+   
+   }
+   #footer-message {
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+
+      background-color: #7B90FF;
+      color: #FFFFFF;
+   }
 }
 
 /** Estilização da scrollbar */

@@ -6,16 +6,19 @@
 
    <title>Cadastro</title>
 
-   <!-- Remove estilos CSS predefinidos, deve ser incluido em todas as páginas antes de outros arquivos css-->
+   <!-- Remove estilos CSS predefinidos, deve ser incluído em todas as páginas antes de outros arquivos css-->
    <link rel="stylesheet" href="./styles/reset.css">
 
    <link rel="stylesheet" href="./styles/forms.css">
    <link rel="stylesheet" href="./styles/index.css">
 
-   <!-- Obtém a fonte Inter, deve ser incluido em todas as páginas -->
+   <!-- Obtém a fonte Inter, deve ser incluído em todas as páginas -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+   
+   <!-- Carrega o sistema de ícones Font Awesome -->
+   <script src="https://kit.fontawesome.com/dcf57934cf.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -61,5 +64,22 @@
 
          </form>
       </main>
+      <footer>
+         <div id="footer-links-container">
+            <ul id="footer-internal-links">
+               <ul><a href="">Página Inicial</a></ul>
+               <ul><a href="">Login</a></ul>
+               <ul><a href="">Cadastro</a></ul>
+               <ul><a href="">Teste</a></ul>
+            </ul>
+            <a href="https://github.com/deyvidfernandes/MasterOfTenses" target="_blank" id="github-link"><i class="fa-brands fa-github" style="color: #ffffff; font-size: 48px;"></i></a>
+         </div>
+         <div id="footer-message">
+            <p>Desenvolvido com <i class="fa-solid fa-heart" style="color: #ffffff;"></i> para o TCC do curso Técnico em Desenvolvimento de Sistemas na ETEC</p>
+            <p>2024</p>
+         </div>
+         <!-- Posiciona o link do github ao lado dos links internos sem influenciar no seu posicionamento -->
+         <script src="./src/styling/footer.js"></script>
+      </footer>
 </body>
 </html>
