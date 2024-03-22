@@ -1,8 +1,21 @@
 /*
 
-   Arquivo de estilos utilizados em várias páginas do projeto.
+   Arquivo de estilização padrão, deve ser aplicado em todas as páginas do projeto.
 
 */
+
+/** Estilização padrão do corpo da página */
+
+body {
+   font-family: "Inter", sans-serif;
+   box-sizing: border-box;
+
+   /** Centralização dos elementos dentro do corpo da página */
+   & > * {
+      width: fit-content;
+      margin-inline: auto;
+   }
+}
 
 .action-button {
       width: 100%;
@@ -20,3 +33,20 @@
    font-size: 32px;
    font-weight: 500;
 }
+
+/** Estilização da scrollbar */
+
+::-webkit-scrollbar {
+   width: 10px;
+ }
+ 
+ /* Track */
+::-webkit-scrollbar-track {
+   background: #F1F1F1;
+}
+ 
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: #232F85;
+   border-radius: 2px;
+ }
