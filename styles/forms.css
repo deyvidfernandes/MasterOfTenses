@@ -5,9 +5,12 @@
 */
 
 body {
-   font-family: "Inter", sans-serif;
-   background-color: #0C102D;
-   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   padding-top: 16px;
+
+   background-color: var(--dark-blue);
 }
 
 .greeting {
@@ -16,7 +19,7 @@ body {
    align-items: center;
    gap: 8px;
 
-   & p { /* para se ao texto abaixo de bem vindo */
+   & p { /* estilos do texto abaixo de bem vindo */
       font-size: 16px;
       font-weight: 500;
    }
@@ -24,7 +27,6 @@ body {
 }
 
 .singup-login-div {
-   margin-inline: auto;
    width: fit-content;
 
    display: flex;
@@ -59,6 +61,8 @@ input {
 
    background-color: #EEE;
    border-radius: 4px;
+
+   /* remove os contornos de foco que os navegadores adicionam por padrão */
    outline: none;
    outline-color: none;
    border: none;
@@ -69,9 +73,10 @@ input {
    flex-direction: column;
    align-items: center;
    gap: 8px;
+   
    & a { /* para se referir ao link já tenho uma conta */
       text-decoration: none;
-      color: #0000EE;
+      color: var(--base-blue);
       font-weight: 500;
    }
 }

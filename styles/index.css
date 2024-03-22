@@ -1,22 +1,116 @@
 /*
 
-   Arquivo de estilos utilizados em várias páginas do projeto.
+   Arquivo de estilização padrão, deve ser aplicado em todas as páginas do projeto.
 
 */
+
+:root {
+   --dark-blue: #0C102D;
+   --base-blue: #232F85;
+   --lighter-base-blue: hsl(233, 58%, 53%);
+   --light-blue: #7B90FF;
+   --bluish-gray: #C0C9E1;
+   --light-gray: #F1F1F1;
+
+}
+
+/** Classes utilitárias */
 
 .action-button {
       width: 100%;
       padding: 16px;
       text-align: center;
       cursor: pointer;
-      background-color: #232F85;
+      background-color: var(--base-blue);
       color: white;
       border: none;
       border-radius: 4px;
       font-size: 18px;
+      transition: background-color 0.2s linear;
+
+      &:hover, &:focus {
+         background-color: var(--lighter-base-blue);
+      
+      }
 }
 
 .light-title {
    font-size: 32px;
    font-weight: 500;
 }
+
+/** Estilização padrão do corpo da página */
+
+body {
+   font-family: "Inter", sans-serif;
+   box-sizing: border-box;
+
+   /** Centralização dos elementos dentro do corpo da página */
+   & > * {
+      width: fit-content;
+      margin-inline: auto;
+   }
+}
+
+/** Estilização do rodapé */
+
+footer {
+   margin-top: 32px;
+   box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.6);
+
+   width: 100%;
+   #footer-links-container {
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      #footer-internal-links {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 32px;
+         
+         a {
+            color: var(--bluish-gray);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+         }
+
+      }
+
+      #github-link {
+         position: absolute;
+      }
+   
+   }
+   #footer-message {
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+
+      background-color: var(--light-blue);
+      color: #FFFFFF;
+   }
+}
+
+/** Estilização da scrollbar */
+
+::-webkit-scrollbar {
+   width: 10px;
+ }
+ 
+ /* Track */
+::-webkit-scrollbar-track {
+   background: var(--light-gray);
+}
+ 
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: var(--base-blue);
+   border-radius: 2px;
+ }

@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   <title>Cadastro</title>
+   <title>Login</title>
 
    <!-- Remove estilos CSS predefinidos, deve ser incluído em todas as páginas antes de outros arquivos css-->
    <link rel="stylesheet" href="./styles/reset.css">
@@ -32,36 +32,28 @@
 
             <!-- Div para agrupar o título com o texto abaixo dele -->
             <div class="greeting">
-               <h1 class="light-title">Bem vindo (a)</h1>
-               <p>Insira os dados para completar seu cadastro</p>
+               <h1 class="light-title">Bem vindo (a) de volta</h1>
+               <p>Insira os dados para fazer o login</p>
             </div>
 
             <!-- Div para agrupar os inputs e o botão de ação -->
             <div> 
                <!-- Div para agrupar os inputs mantendo-os separados do botão de ação e facilitar a estilização -->
                <div>
-                  <label for="username">Nome de usuário:</label>
+                  <label for="username">Nome de usuário ou E-mail</label>
                   <input id="username" type="text">
-               </div>
-               <div>
-                  <label for="email">E-mail:</label>
-                  <input id="email" type="email">
                </div>
                <div>
                   <label for="password">Senha:</label>
                   <input id="password" type="password">
                </div>
-               <div>
-                  <label for="confirm-password">Confirme a senha:</label>
-                  <input id="confirm-password" type="password">
-               </div>
             </div>
 
             <div class="action-button-group">
                <button class="action-button">
-                  Criar minha conta
+                  Entrar
                </button>
-               <a href="login.html">Já tenho uma conta</a>
+               <a href="singup.html">Não tenho uma conta</a>
             </div>
 
          </form>
