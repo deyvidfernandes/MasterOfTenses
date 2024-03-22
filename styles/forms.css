@@ -10,7 +10,7 @@ body {
    gap: 16px;
    padding-top: 16px;
 
-   background-color: #0C102D;
+   background-color: var(--dark-blue);
 }
 
 .greeting {
@@ -76,7 +76,7 @@ input {
    
    & a { /* para se referir ao link já tenho uma conta */
       text-decoration: none;
-      color: #0000EE;
+      color: var(--base-blue);
       font-weight: 500;
    }
 }

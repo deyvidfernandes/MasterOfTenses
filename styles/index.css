@@ -4,6 +4,16 @@
 
 */
 
+:root {
+   --dark-blue: #0C102D;
+   --base-blue: #232F85;
+   --lighter-base-blue: hsl(233, 58%, 53%);
+   --light-blue: #7B90FF;
+   --bluish-gray: #C0C9E1;
+   --light-gray: #F1F1F1;
+
+}
+
 /** Classes utilitárias */
 
 .action-button {
@@ -11,7 +21,7 @@
       padding: 16px;
       text-align: center;
       cursor: pointer;
-      background-color: #232F85;
+      background-color: var(--base-blue);
       color: white;
       border: none;
       border-radius: 4px;
@@ -56,7 +66,7 @@ footer {
          gap: 32px;
          
          a {
-            color: #C0C9E1;
+            color: var(--bluish-gray);
             text-decoration: none;
             font-weight: 500;
             text-transform: uppercase;
@@ -77,7 +87,7 @@ footer {
       align-items: center;
       gap: 16px;
 
-      background-color: #7B90FF;
+      background-color: var(--light-blue);
       color: #FFFFFF;
    }
 }
@@ -90,11 +100,11 @@ footer {
  
  /* Track */
 ::-webkit-scrollbar-track {
-   background: #F1F1F1;
+   background: var(--light-gray);
 }
  
  /* Handle */
  ::-webkit-scrollbar-thumb {
-   background: #232F85;
+   background: var(--base-blue);
    border-radius: 2px;
  }
