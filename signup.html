@@ -28,7 +28,7 @@
          </a>
       </header>
       <main>
-         <form  class="singup-login-div" action="">
+         <form  class="signup-login-div" method="post" action="./signupAction.php">
 
             <!-- Div para agrupar o título com o texto abaixo dele -->
             <div class="greeting">
@@ -41,23 +41,24 @@
                <!-- Div para agrupar os inputs mantendo-os separados do botão de ação e facilitar a estilização -->
                <div>
                   <label for="username">Nome de usuário:</label>
-                  <input id="username" type="text">
+                  <input id="username" name="username" type="text">
                </div>
                <div>
                   <label for="email">E-mail:</label>
-                  <input id="email" type="email">
+                  <input id="email" name="email" type="email">
                </div>
                <div>
                   <label for="password">Senha:</label>
-                  <input id="password" type="password">
+                  <input id="password" name="password" type="password">
                </div>
                <div>
-                  <label for="confirm-password">Confirme a senha:</label>
-                  <input id="confirm-password" type="password">
+                  <label for="confirm_password">Confirme a senha:</label>
+                  <input id="confirm_password" name="confirm_password" type="password">
                </div>
             </div>
 
             <div class="action-button-group">
+               <a href="./signupAction.php" style="text-decoration: none;"></a>
                <button class="action-button">
                   Criar minha conta
                </button>
@@ -71,7 +72,7 @@
             <ul id="footer-internal-links">
                <ul><a href="index.php">Página Inicial</a></ul>
                <ul><a href="login.html">Login</a></ul>
-               <ul><a href="singup.html">Cadastro</a></ul>
+               <ul><a href="signup.html">Cadastro</a></ul>
                <ul><a href="test.html">Teste</a></ul>
             </ul>
             <a href="https://github.com/deyvidfernandes/MasterOfTenses" target="_blank" id="github-link"><i class="fa-brands fa-github" style="color: #ffffff; font-size: 48px;"></i></a>
