@@ -24,8 +24,8 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
 
     // Dados de conexão com o banco de dados
     $servername = "localhost"; // Nome do servidor MySQL
-    $username = "testUser"; // Nome de usuário do MySQL
-    $password = "1234"; // Senha do MySQL
+    $username = "root"; // Nome de usuário do MySQL
+    $password = "Je@3786129"; // Senha do MySQL
     $dbname = "master_of_tenses"; // Nome do banco de dados
     
     // Conecta ao banco de dados usando PDO

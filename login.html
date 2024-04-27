@@ -28,7 +28,7 @@
          </a>
       </header>
       <main>
-         <form  class="signup-login-div" action="loginAction.php">
+         <form  class="signup-login-div" action="loginAction.php" method="post"> 
 
             <!-- Div para agrupar o título com o texto abaixo dele -->
             <div class="greeting">
@@ -41,11 +41,11 @@
                <!-- Div para agrupar os inputs mantendo-os separados do botão de ação e facilitar a estilização -->
                <div>
                   <label for="username">Nome de usuário ou E-mail</label>
-                  <input id="username" type="text">
+                  <input id="username" type="text" name="username">
                </div>
                <div>
                   <label for="password">Senha:</label>
-                  <input id="password" type="password">
+                  <input id="password" type="password" name="password">
                </div>
             </div>
 
