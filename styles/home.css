@@ -1,0 +1,123 @@
+/*
+
+   Arquivo de estilos utilizados nos formulários das páginas de login e cadastro
+
+*/
+
+
+/* Estilização do hero (Primera seção) */
+
+.hero-container {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 32px;
+   height: 100vh;
+   max-height: 816px;
+
+   background-color: var(--dark-blue);
+   & > div {
+      max-width: 816px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+   }
+}
+
+#hero_title-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 8px;
+
+   & > h1 {
+      font-size: 42px;
+      color: white;
+      font-weight: 600;
+   }
+   & > h1 ~ h1 {
+      font-size: 32px;
+      color: white;
+      font-weight: 700;
+   }
+}
+
+#hero_paragraph {
+   font-size: 16px;
+   color: white;
+   line-height: 150%;
+}
+
+#hero_buttons-container {
+   display: flex;
+   gap: 32px;
+   width: 432px;
+}
+
+.test-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+   gap: 24px;
+   padding-block: 32px;
+   background-color: var(--bluish-gray);
+}
+
+#benefits-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 32px;
+   padding-block: 32px;
+}
+
+.medium-title {
+   font-size: 32px;
+   font-weight: 500;
+}
+
+.brand {
+   color: var(--red);
+   text-decoration: underline;
+}
+
+#benefits-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 32px;
+   max-width: 816px;
+   justify-content: center;
+
+   & > hr {
+      width: 100%;
+      margin: 0px;
+      border: 1px solid var(--dark-gray);
+   }
+}
+
+.benefit {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 16px;     
+   & > h3 {
+      font-size: 24px;
+      font-weight: 500;
+   }
+   & > p {
+      line-height: 150%;
+      text-align: center;
+   }
+}
+
+#cta-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 24px;
+   padding-top: 24px;
+}
