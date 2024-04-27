@@ -4,7 +4,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     // Dados de conexão com o banco de dados
     $servername = "localhost"; // Nome do servidor MySQL
     $username = "root"; // Nome de usuário do MySQL
-    $password = "Je@3786129"; // Senha do MySQL
+    $password = "2712"; // Senha do MySQL
     $dbname = "master_of_tenses"; // Nome do banco de dados
     
     // Conecta ao banco de dados
@@ -16,8 +16,8 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     }
     
     // Evita injeção de SQL usando prepared statements
-    $stmt = $conn->prepare("SELECT * FROM table_users WHERE (email = ? OR username = ?) AND user_password = ?");
-    $stmt->bind_param($_POST['username'], $_POST['username'], $_POST['password']);
+    $stmt = $conn->prepare("SELECT * FROM table_users WHERE (email=? OR username=?) AND user_password=?");
+    $stmt->bind_param("sss", $_POST['username'], $_POST['username'], $_POST['password']);
     $stmt->execute();
     $result = $stmt->get_result();
     
