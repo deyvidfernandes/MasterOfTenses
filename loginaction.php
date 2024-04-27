@@ -20,7 +20,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     $stmt->bind_param($_POST['username'], $_POST['username'], $_POST['password']);
     $stmt->execute();
     $result = $stmt->get_result();
-
+    
     // Verifica se o usuário foi encontrado no banco de dados
     if ($result->num_rows == 1) {
         // Usuário autenticado com sucesso, redireciona para a página de sucesso
