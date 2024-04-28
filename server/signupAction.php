@@ -1,22 +1,17 @@
 <?php
+require_once("./util/JWTAuth.php");
+require_once("./env.php");
 
 if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
     // Verifica se as senhas coincidem
     if($_POST['password'] !== $_POST['confirm_password']) {
         // Redireciona de volta para a página de registro com mensagem de erro
-        header("Location: signup.html?erro=1");
+        header("Location: ../signup.html?erro=1");
         exit();
     }
-
-    // Dados de conexão com o banco de dados
-    $servername = "localhost"; // Nome do servidor MySQL
-    $username = "root"; // Nome de usuário do MySQL
-    $password = "2712"; // Senha do MySQL
-    $dbname = "master_of_tenses"; // Nome do banco de dados
-    
     // Conecta ao banco de dados usando PDO
     try {
-        $conecta = new PDO("mysql:host=$servername;dbname=$dbname;port=3306", $username, $password);
+        $conecta = new PDO("mysql:host=".getenv('DB_URL').";dbname=".getenv('DB_SCHEMA').";port=3306", getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
         $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
         // Caso ocorra algum erro na conexão
@@ -29,12 +24,14 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
     // Executa a consulta SQL
     try {
         $resultado = $conecta->query($sql);
+        $authToken = JWT\generateAuthToken($_POST['username'], getenv('AUTHENTICATION_DURATION_IN_DAYS'));
+        JWT\saveAuthTokenInCookie($authToken, getenv('AUTHENTICATION_DURATION_IN_DAYS'));
         header("Location: ../index.php");
     } catch(PDOException $e) {
-        header("Location: signup.html?erro=1");
+        header("Location: ../signup.html?erro=1");
     }
 } else {
     // Redireciona de volta para a página de registro se os campos não foram submetidos
-    header("Location: signup.html");
+    header("Location: ../signup.html");
     exit();
 }
