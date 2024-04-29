@@ -1,5 +1,6 @@
 <?php namespace JWT;
-   require_once 'env.php';
+      require_once(dirname(__DIR__).'/env.php');
+
 
    enum tokenState: string {
       case expired = "expired";
