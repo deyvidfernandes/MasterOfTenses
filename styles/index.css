@@ -6,13 +6,20 @@
 
 :root {
    --red: #F64A4A;
+   --green: #28AD25;
    --dark-blue: #0C102D;
    --base-blue: #232F85;
    --lighter-base-blue: hsl(233, 58%, 53%);
    --light-blue: #7B90FF;
    --bluish-gray: #C0C9E1;
-   --light-gray: #F1F1F1;
-   --dark-gray: #D0D0D0;
+   --light-gray: hsl(0, 0%, 95%);
+   --gray: hsl(0, 0%, 88%);
+   --dark-gray: hsl(0, 0%, 82%);
+   --dark-gray-1: hsl(0, 0%, 60%);
+
+   --red-alpha: rgba(246, 74, 74, 40%);
+   --green-alpha: rgb(40, 173, 37, 40%);
+   --light-blue-alpha: rgb(123, 144, 255, 40%);
 
 }
 
@@ -29,6 +36,7 @@
       border-radius: 4px;
       font-size: 18px;
       transition: background-color 0.2s linear;
+      text-decoration: none;
 
       &:hover, &:focus {
          background-color: var(--lighter-base-blue);
@@ -40,9 +48,48 @@
    width: 200px;
 }
 
+input, .correction-display {
+   height: 32px;
+   padding-left: 16px;
+
+   background-color: #EEE;
+   border-radius: 4px;
+
+   /* remove os contornos de foco que os navegadores adicionam por padrão */
+   outline: none;
+   outline-color: none;
+   border: none;
+}
+
 .light-title {
    font-size: 32px;
    font-weight: 500;
+}
+
+.bottom-padding {
+   padding-bottom: 32px;
+}
+
+/* Estilização da navbar */
+
+nav {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-inline: 64px;
+   background-color: var(--dark-blue);
+   height: 70px;
+
+   #nav-links {
+      display: flex;
+      gap: 48px;
+
+      a {
+         color: #FFFFFF;
+         text-decoration: none;
+         font-weight: 400;
+      }
+   }
 }
 
 /** Estilização padrão do corpo da página */
@@ -61,10 +108,10 @@ body {
 /** Estilização do rodapé */
 
 footer {
-   margin-top: 32px;
    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.6);
 
    width: 100%;
+
    #footer-links-container {
       height: 100px;
       display: flex;
@@ -72,13 +119,18 @@ footer {
       align-items: center;
       background-color: #0C102D;
 
+      color: var(--bluish-gray);
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+   
+
       #footer-internal-links {
          display: flex;
          justify-content: center;
          align-items: center;
          gap: 32px;
 
-         
          a {
             color: var(--bluish-gray);
             text-decoration: none;
