@@ -6,13 +6,20 @@
 
 :root {
    --red: #F64A4A;
+   --green: #28AD25;
    --dark-blue: #0C102D;
    --base-blue: #232F85;
    --lighter-base-blue: hsl(233, 58%, 53%);
    --light-blue: #7B90FF;
    --bluish-gray: #C0C9E1;
-   --light-gray: #F1F1F1;
-   --dark-gray: #D0D0D0;
+   --light-gray: hsl(0, 0%, 95%);
+   --gray: hsl(0, 0%, 88%);
+   --dark-gray: hsl(0, 0%, 82%);
+   --dark-gray-1: hsl(0, 0%, 60%);
+
+   --red-alpha: rgba(246, 74, 74, 40%);
+   --green-alpha: rgb(40, 173, 37, 40%);
+   --light-blue-alpha: rgb(123, 144, 255, 40%);
 
 }
 
@@ -40,9 +47,44 @@
    width: 200px;
 }
 
+input, .correction-display {
+   height: 32px;
+   padding-left: 16px;
+
+   background-color: #EEE;
+   border-radius: 4px;
+
+   /* remove os contornos de foco que os navegadores adicionam por padrão */
+   outline: none;
+   outline-color: none;
+   border: none;
+}
+
 .light-title {
    font-size: 32px;
    font-weight: 500;
+}
+
+/* Estilização da navbar */
+
+nav {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-inline: 64px;
+   background-color: var(--dark-blue);
+   height: 70px;
+
+   #nav-links {
+      display: flex;
+      gap: 48px;
+
+      a {
+         color: #FFFFFF;
+         text-decoration: none;
+         font-weight: 400;
+      }
+   }
 }
 
 /** Estilização padrão do corpo da página */
