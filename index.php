@@ -23,7 +23,7 @@
 </head>
 
 <?php
-   require_once 'util/JWTAuth.php';
+   require_once './server/util/JWTAuth.php';
    $isLogged = isset($_COOKIE['token']);
    $isLogged = $isLogged && JWT\validateAuthToken($_COOKIE['token']) == JWT\tokenState::valid;
 
