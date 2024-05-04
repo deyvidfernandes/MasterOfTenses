@@ -35,3 +35,4 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
     header("Location: ../signup.html");
     exit();
 }
+
