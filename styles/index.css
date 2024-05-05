@@ -36,6 +36,7 @@
       border-radius: 4px;
       font-size: 18px;
       transition: background-color 0.2s linear;
+      text-decoration: none;
 
       &:hover, &:focus {
          background-color: var(--lighter-base-blue);
@@ -64,6 +65,11 @@ input, .correction-display {
    font-size: 32px;
    font-weight: 500;
 }
+
+.bottom-padding {
+   padding-bottom: 32px;
+}
+
 
 /* Estilização da navbar */
 
@@ -103,10 +109,10 @@ body {
 /** Estilização do rodapé */
 
 footer {
-   margin-top: 32px;
    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.6);
 
    width: 100%;
+
    #footer-links-container {
       height: 100px;
       display: flex;
@@ -114,13 +120,18 @@ footer {
       align-items: center;
       background-color: #0C102D;
 
+      color: var(--bluish-gray);
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+   
+
       #footer-internal-links {
          display: flex;
          justify-content: center;
          align-items: center;
          gap: 32px;
 
-         
          a {
             color: var(--bluish-gray);
             text-decoration: none;
