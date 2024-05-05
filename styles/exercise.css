@@ -1,0 +1,212 @@
+/*
+
+   Arquivo de estilos utilizados nos formulários das páginas de login e cadastro
+
+*/
+
+#exercise-component {
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   padding-block: 46px;
+   height: calc(100vh - 70px);
+}
+
+#exercise-top-container {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   gap: 32px;
+}
+
+#infinitive-container {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 8px
+}
+
+#aside-buttons-container {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+.square-button {
+   width: 32px;
+   height: 32px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   cursor: pointer;
+   transition: filter 0.2s linear;
+   
+   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+
+   border: none;
+   border-radius: 4px;
+   img {
+      width: 20px;
+      height: 20px;
+      -webkit-filter: invert(100%); /* Safari/Chrome */
+      filter: invert(100%);
+   }
+}
+
+.audio-button {
+   background-color: var(--base-blue);
+   img {
+      width: 24px !important;
+   }
+}
+
+#dictionary-button {
+   background-color: var(--red);
+}
+
+#infinitive-word {
+   font-size: 64px;
+   font-weight: 500;
+   text-transform: capitalize;
+}
+
+#fields-container {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   width: 600px;
+}
+
+#input-fields-container {
+   display: flex;
+   flex-direction: row;
+   gap: 32px;
+   width: 100%;
+}
+
+#correction-fields-container {
+   display: flex;
+   flex-direction: row;
+   gap: 32px;
+   width: 100%;
+}
+
+.tense-fields-container {
+   display: flex;
+   flex-direction: column;
+   align-items: stretch;
+   gap: 4px;
+   width: 100%;
+   & > p {
+      font-weight: 500;
+      padding-left: 8px;
+   }
+   input, .correction-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Ubuntu Mono", monospace;
+      height: 40px;
+
+      font-family: "Roboto Mono", monospace;
+      font-optical-sizing: auto;
+      font-style: normal;
+      font-weight: 500;
+
+      font-size: 18px;
+      text-align: center;
+      padding: 0;
+   }
+}
+
+#simple-past-audio, #participle-audio {
+   position: absolute;
+}
+
+#exercise-bottom-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   gap: 48px;
+   width: 600px;
+   padding-inline: 48px;
+   
+   div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+
+      p {
+         font-size: 12px;
+      }
+   }
+   button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      min-width: 96px;
+   
+      background-color: #EEE;
+      border-radius: 4px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3)   ;
+   
+      /* remove os contornos de foco que os navegadores adicionam por padrão */
+      outline: none;
+      outline-color: none;
+      border: none;
+
+      cursor: pointer;
+
+      transition: background-color 0.2s linear;
+
+      &:hover, &:focus {
+         background-color: var(--gray);
+      
+      }
+   }
+}
+
+#show-answers-button {
+   width: max-content;
+   padding: 16px;
+   font-size: 16px;
+   font-weight: medium;
+}
+
+.wrong-highlight {
+   color: var(--red);
+   padding: .25em 0;
+    background: var(--red-alpha);
+}
+
+.correct-highlight {
+   color: var(--green);
+   padding: .25em 0;
+    background: var(--green-alpha);
+}
+
+.corrected-highlight {
+   color: var(--light-blue);
+   padding: .25em 0;
+    background: var(--light-blue-alpha);
+}
+
+.empty {
+   color: var(--dark-gray-1);
+   padding: .25em 0;
+}
+
+.first {
+   padding-left: .25em;
+}
+
+.last {
+   padding-right: .25em;
+}

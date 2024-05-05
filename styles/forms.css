@@ -55,19 +55,6 @@ body {
 
 }
 
-input {
-   height: 32px;
-   padding-left: 16px;
-
-   background-color: #EEE;
-   border-radius: 4px;
-
-   /* remove os contornos de foco que os navegadores adicionam por padrão */
-   outline: none;
-   outline-color: none;
-   border: none;
-}
-
 .action-button-group {
    display: flex;
    flex-direction: column;
