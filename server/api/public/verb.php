@@ -1,7 +1,7 @@
 <?php
    header('Content-Type: application/json');
 
-   require_once '../env.php';
+   require_once '../../env.php';
    
    $conn = new mysqli(getenv('DB_URL'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'), getenv('DB_SCHEMA'));
 
