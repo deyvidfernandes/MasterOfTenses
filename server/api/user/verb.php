@@ -28,5 +28,6 @@
       $stmt = $conn->prepare("INSERT INTO user_verb_in_study (user_email, verb_id, expires, stability, difficult, repetitions, lapses, learning_state, last_review) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
       $stmt->bind_param("sssiiiiis", $userEmail, $input['verb_id'], $input['expires'], $input['stability'], $input['difficult'], $input['repetitions'], $input['lapses'], $input['learning_state'], $input['last_review']);
       $stmt->execute();
-      $result = $stmt->get_result();
+      $stmt->close();
+      $conn->close();
    }

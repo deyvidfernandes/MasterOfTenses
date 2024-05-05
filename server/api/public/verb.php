@@ -38,9 +38,13 @@
       $modifierWithReverse = $modifier . " " . ($reverse ? "DESC" : "ASC");
       $stmt = $conn->prepare("SELECT * FROM verbs ORDER BY $modifierWithReverse LIMIT ?, ?");
       $stmt->bind_param("ii", $position, $quantity);
+
    }
 
    $stmt->execute();
    $result = $stmt->get_result();
+   
+   $stmt->close();
+   $conn->close();
    echo json_encode($result->fetch_all(MYSQLI_ASSOC));
    
