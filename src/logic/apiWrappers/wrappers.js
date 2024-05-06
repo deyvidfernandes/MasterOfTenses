@@ -2,7 +2,6 @@ import * as APITypes from "./types.js";
 import * as FSRSTypes from "../../lib/FSRS/types.js";
 const currentDomain = window.location.origin;
 
-
 /**
  *
  * @param {Object} config
@@ -12,7 +11,6 @@ const currentDomain = window.location.origin;
  * @param {number} config.quantity
  * @returns {Promise.<APITypes.EnrichedVerbAPIFormat}>}
  */
-
 export const fetchVerbData = async (config) => {
 	const { order, reverse, position, quantity } = config;
 
@@ -31,7 +29,7 @@ export const fetchVerbData = async (config) => {
 	else url.searchParams.append("quantity", 1);
 
 	const res = await fetch(url);
-	return (await res.json())[0];
+	return {verbData: (await res.json())[0]};
 };
 
 /**
@@ -39,8 +37,7 @@ export const fetchVerbData = async (config) => {
  * @param {FSRSTypes.RepetitionInfo} repetitionInfo
  * @returns void
  */
-
-export const postVerbData = (repetitionInfo) => {
+export const postVerbRevisionData = (repetitionInfo) => {
 	const url = new URL(
 		`${currentDomain}/MasterOfTenses/server/api/user/verb.php`,
 	);
@@ -51,6 +48,19 @@ export const postVerbData = (repetitionInfo) => {
 			"Content-Type": "application/json",
 		},
 	});
+};
+
+/**
+ * @returns {object}
+ * @param {APITypes.EnrichedVerbAPIFormat} verbData
+ * @param {FSRSTypes.RepetitionInfo} metadata
+ */
+export const fetchVerbInStudy = async () => {
+	const url = new URL(
+		`${currentDomain}/MasterOfTenses/server/api/user/verb.php`,
+	);
+	const res = await fetch(url);
+	return await res.json();
 };
 
 export const Types = {};

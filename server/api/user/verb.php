@@ -18,16 +18,54 @@
       $input = json_decode(file_get_contents('php://input'), true);
       
       // Verifica se o JSON foi decodificado corretamente
-      if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+      if ($input === null && json_last_error() !== JSON_ERROR_NONE) {
          // Erro ao decodificar o JSON
          http_response_code(400); // Bad Request
          echo json_encode(array('error' => 'Erro ao decodificar JSON'));
          exit;
       }
 
-      $stmt = $conn->prepare("INSERT INTO user_verb_in_study (user_email, verb_id, expires, stability, difficult, repetitions, lapses, learning_state, last_review) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->bind_param("sssiiiiis", $userEmail, $input['verb_id'], $input['expires'], $input['stability'], $input['difficult'], $input['repetitions'], $input['lapses'], $input['learning_state'], $input['last_review']);
+      $stmt = $conn->prepare(
+         "INSERT INTO user_verb_in_study (user_email, verb_id, expires, stability, difficult, repetitions, lapses, learning_state, last_review) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) AS new
+            ON DUPLICATE KEY UPDATE 
+               expires = ?, 
+               stability = ?,
+               difficult = ?,
+               repetitions = ?,
+               lapses = ?,
+               learning_state = ?,
+               last_review = ?;"
+         );
+      $stmt->bind_param("sssiiiiis"."siiiiis", $userEmail, $input['verb_id'], $input['expires'], $input['stability'], $input['difficult'], $input['repetitions'], $input['lapses'], $input['learning_state'], $input['last_review'], $input['expires'], $input['stability'], $input['difficult'], $input['repetitions'], $input['lapses'], $input['learning_state'], $input['last_review']);
       $stmt->execute();
       $stmt->close();
       $conn->close();
+
+   } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+      $metadataQuery = $conn->prepare(
+            "SELECT *
+               FROM user_verb_in_study
+               WHERE user_email = ?
+               ORDER BY expires ASC
+               LIMIT 1
+            ");
+      $metadataQuery->bind_param("s", $userEmail);
+      $metadataQuery->execute();
+      $metadata = $metadataQuery->get_result()->fetch_assoc();
+      $metadataQuery->close();
+
+      $verbDataQuery = $conn->prepare("SELECT * FROM verbs WHERE id = ?;");
+      $verbDataQuery->bind_param("i", $metadata['verb_id']);
+      $verbDataQuery->execute();
+      $verbData = $verbDataQuery->get_result()->fetch_assoc();
+      $verbDataQuery->close();
+      
+      $conn->close();
+
+      echo json_encode(['metadata' => $metadata, 'verbData' => $verbData]);
+
+   } else {
+      http_response_code(405); // Method Not Allowed
+      echo json_encode(['error' => 'Método não permitido']);
    }

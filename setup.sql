@@ -48,6 +48,8 @@ CREATE TABLE user_verb_in_study (
    learning_state INT NOT NULL,
    last_review DATETIME NOT NULL,
 
+	CONSTRAINT pk_user_verb_in_study 
+		PRIMARY KEY (user_email, verb_id),
    CONSTRAINT fk_user_verb_in_study_user 
       FOREIGN KEY (user_email) 
       REFERENCES table_users(email),
