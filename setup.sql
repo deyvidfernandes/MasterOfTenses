@@ -5,11 +5,11 @@ CREATE DATABASE Master_of_tenses;
 USE Master_of_tenses;
 
 -- Criação da tabela Usuário
-CREATE TABLE table_user (
+CREATE TABLE table_users (
    email VARCHAR(100) PRIMARY KEY,
-   user_name VARCHAR(100) NOT NULL,
+   username VARCHAR(100) NOT NULL,
    user_password VARCHAR(100) NOT NULL,
-   register_date DATE NOT NULL,
+   register_date TIMESTAMP DEFAULT NOW(),
    verb_register_json JSON
 );
 
@@ -40,17 +40,19 @@ CREATE TABLE verbs (
 CREATE TABLE user_verb_in_study (
    user_email VARCHAR(100) NOT NULL,
    verb_id INT NOT NULL,
-   expires DATE NOT NULL,
+   expires DATETIME NOT NULL,
    stability FLOAT NOT NULL,
    difficult FLOAT NOT NULL,
    repetitions INT NOT NULL,
    lapses INT NOT NULL,
    learning_state INT NOT NULL,
-   last_review DATE NOT NULL,
+   last_review DATETIME NOT NULL,
 
+	CONSTRAINT pk_user_verb_in_study 
+		PRIMARY KEY (user_email, verb_id),
    CONSTRAINT fk_user_verb_in_study_user 
       FOREIGN KEY (user_email) 
-      REFERENCES table_user(email),
+      REFERENCES table_users(email),
    CONSTRAINT fk_user_verb_in_study_verb 
       FOREIGN KEY (verb_id) 
       REFERENCES verbs(id)

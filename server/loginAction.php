@@ -1,6 +1,6 @@
 <?php
 require_once("./util/JWTAuth.php");
-require_once("./util/env.php");
+require_once("./env.php");
 // Verifica se os campos de nome de usuário e senha foram submetidos
 if(isset($_POST['username']) && isset($_POST['password'])) {
     // Conecta ao banco de dados
@@ -12,8 +12,8 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     }
     
     // Evita injeção de SQL usando prepared statements
-    $stmt = $conn->prepare("SELECT * FROM table_users WHERE (email=? OR username=?) AND user_password=?");
-    $stmt->bind_param("sss", $_POST['username'], $_POST['username'], $_POST['password']);
+    $stmt = $conn->prepare("SELECT * FROM table_users WHERE (email=?) AND user_password=?");
+    $stmt->bind_param("ss", $_POST['username'], $_POST['password']);
     $stmt->execute();
     $result = $stmt->get_result();
     

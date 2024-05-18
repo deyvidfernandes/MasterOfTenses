@@ -24,10 +24,12 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
     // Executa a consulta SQL
     try {
         $resultado = $conecta->query($sql);
-        $authToken = JWT\generateAuthToken($_POST['username'], getenv('AUTHENTICATION_DURATION_IN_DAYS'));
+        $authToken = JWT\generateAuthToken($_POST['email'], getenv('AUTHENTICATION_DURATION_IN_DAYS'));
         JWT\saveAuthTokenInCookie($authToken, getenv('AUTHENTICATION_DURATION_IN_DAYS'));
         header("Location: ../index.php");
     } catch(PDOException $e) {
+        echo $e->getMessage();
+        exit();
         header("Location: ../signup.html?erro=1");
     }
 } else {
