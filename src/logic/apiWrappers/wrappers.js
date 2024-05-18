@@ -52,8 +52,8 @@ export const postVerbRevisionData = (repetitionInfo) => {
 
 /**
  * @returns {object}
- * @param {APITypes.EnrichedVerbAPIFormat} verbData
- * @param {FSRSTypes.RepetitionInfo} metadata
+ * @property {APITypes.EnrichedVerbAPIFormat} verbData
+ * @property {FSRSTypes.RepetitionInfo} metadata
  */
 export const fetchVerbInStudy = async () => {
 	const url = new URL(
@@ -63,4 +63,15 @@ export const fetchVerbInStudy = async () => {
 	return await res.json();
 };
 
-export const Types = {};
+/**
+ * @returns {object}
+ * @property {APITypes.EnrichedVerbAPIFormat} verbData
+ */
+export const fetchNewVerb = async () => {
+	const url = new URL(
+		`${currentDomain}/MasterOfTenses/server/api/user/newVerbs.php`,
+	);
+	const res = await fetch(url);
+	return {verbData: await res.json()};
+};
+

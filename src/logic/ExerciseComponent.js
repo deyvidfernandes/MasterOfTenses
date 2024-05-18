@@ -4,11 +4,14 @@ import { generateHTMLForInputStep } from "./InputStep.js";
 import { generateHTMLForCorrectionStep } from "./CorrectionStep.js";
 import * as FSRSTypes from "../lib/FSRS/types.js";
 import {
+	fetchNewVerb,
 	fetchVerbData,
 	fetchVerbInStudy,
 	postVerbRevisionData,
 } from "./apiWrappers/wrappers.js";
 import { constructCard } from "../lib/FSRS/helpers.js";
+import { generateHTMLForTestEnding } from "./testEnding.js";
+import { generateHTMLForExerciseEnding } from "./exerciseEnding.js";
 
 const FSRS = new _FSRS();
 
@@ -53,7 +56,7 @@ class ExerciseComponent extends HTMLElement {
 	#index = 0;
 	#currentVerbData;
 	#currentVerbMetadata;
-	#nextVerbData;
+	#type;
 	#infinitiveAudio;
 	#simplePastAudio;
 	#participleAudio;
@@ -79,9 +82,9 @@ class ExerciseComponent extends HTMLElement {
 			postVerbRevisionData(repetitionInfo);
 		};
 
-		const type = this.getAttribute("type");
+		this.#type = this.getAttribute("type");
 
-		switch (type) {
+		switch (this.#type) {
 			case "test":
 				this.#dataFetcher = async () =>
 					await fetchVerbData({
@@ -92,10 +95,12 @@ class ExerciseComponent extends HTMLElement {
 					});
 				break;
 			case "exercise":
-				this.#dataFetcher = async () => fetchVerbInStudy();
+				this.#dataFetcher = fetchVerbInStudy;
 				this.#dataPoster = saveRepetitionInfo;
 				break;
 			case "discovery":
+				this.#dataFetcher = fetchNewVerb
+				this.#dataPoster = saveRepetitionInfo;
 				break;
 			default:
 				throw new Error("Invalid type attribute");
@@ -214,8 +219,18 @@ class ExerciseComponent extends HTMLElement {
 				else this.#dataPoster(cardData);
 
 				const result = await this.#dataFetcher();
+				if (!result.metadata && this.#type === "exercise") {
+					this.innerHTML = generateHTMLForExerciseEnding();
+					return;
+				}
 				this.#currentVerbData = result.verbData;
 				this.#currentVerbMetadata = result.metadata;
+
+				if (this.#type === "test" && this.#index === 3) {
+					this.innerHTML = generateHTMLForTestEnding();
+					return;
+				}
+
 				this.renderInputStep();
 			});
 		}

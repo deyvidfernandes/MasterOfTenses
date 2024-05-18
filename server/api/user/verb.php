@@ -46,24 +46,34 @@
       $metadataQuery = $conn->prepare(
             "SELECT *
                FROM user_verb_in_study
-               WHERE user_email = ?
+               WHERE user_email = ? AND expires < DATE_ADD(UTC_TIMESTAMP(), INTERVAL 15 MINUTE)
                ORDER BY expires ASC
                LIMIT 1
             ");
       $metadataQuery->bind_param("s", $userEmail);
       $metadataQuery->execute();
-      $metadata = $metadataQuery->get_result()->fetch_assoc();
+      $metadataResult = $metadataQuery->get_result();
+      $metadataData = $metadataResult->fetch_assoc();
+
+      $revisionsDone = mysqli_num_rows($metadataResult) === 0;
+      if ($revisionsDone) {
+         echo json_encode(['metadata' => null, 'verbData' => null]);
+         exit();
+      }
+
       $metadataQuery->close();
 
       $verbDataQuery = $conn->prepare("SELECT * FROM verbs WHERE id = ?;");
-      $verbDataQuery->bind_param("i", $metadata['verb_id']);
+      $verbDataQuery->bind_param("i", $metadataData['verb_id']);
       $verbDataQuery->execute();
       $verbData = $verbDataQuery->get_result()->fetch_assoc();
+
+
       $verbDataQuery->close();
       
       $conn->close();
 
-      echo json_encode(['metadata' => $metadata, 'verbData' => $verbData]);
+      echo json_encode(['metadata' => $metadataData, 'verbData' => $verbData]);
 
    } else {
       http_response_code(405); // Method Not Allowed

@@ -24,7 +24,21 @@
    <script type="module" src="src/logic/ExerciseComponent.js" defer></script>
 
 </head>
+
+<?php
+   require_once './server/util/JWTAuth.php';
+   $isLogged = isset($_COOKIE['token']);
+   $isLogged = $isLogged && JWT\validateAuthToken($_COOKIE['token']) == JWT\tokenState::valid;
+
+   if (!$isLogged) {
+      require_once './server/generators/errorMessages.php';
+      ErrorMessages\generateError401HTML();
+      exit();
+   }
+?>
+
 <body>
+
       <nav>
          <a href="index.php">
             <img src="./static/logo-master-of-tenses.png" height="70px" alt="Logo da Master of Tenses, um relógio branco vestindo uma faixa vermelha como um ninja, a seu lado, o nome da marca.">
@@ -38,10 +52,15 @@
          </ul>
       </nav>
       <main>
-         
-         <exercise-component type="test"></exercise-component>
-
-
+         <?php
+            $type = $_GET['type'];
+            
+            if ($type == '1') {
+               echo '<exercise-component type="exercise"></exercise-component>';
+            } else if ($type == '2') {
+               echo '<exercise-component type="discovery"></exercise-component>';
+            };
+         ?>
       </main>
       <footer>
          <div id="footer-links-container">

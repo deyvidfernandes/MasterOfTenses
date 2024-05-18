@@ -39,6 +39,11 @@
    gap: 8px;
 
    & > h1 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       font-size: 42px;
       color: white;
       font-weight: 600;
@@ -162,4 +167,37 @@
 }
 #welcome_back_container {
    margin-top: 64px;
+}
+
+.switching-container {
+   display: inline-block;
+   background-color: var(--base-blue);
+   padding-inline: 4px;
+   padding-top: 2px;
+   max-width: min-content;
+   max-height: 48px;
+   overflow: hidden;
+   div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+   }
+}
+
+@keyframes moveUp {
+   from {
+       left: 0;
+   }
+   20% {
+      left: 100%;
+      transform: translateY(-66px);
+   }
+   to {
+      transform: translateY(-66px);
+   }
+}
+
+.switching-container .--switching {
+   animation: moveUp 2s ease-out infinite;
 }
